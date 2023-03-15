@@ -38,7 +38,7 @@ public class ServiceRegistryAutoConfiguration {
 		@Autowired(required = false)
 		private Registration registration;
 
-		@Bean
+		@Bean //ServiceRegistryEndpoint 服务注册终端
 		@ConditionalOnAvailableEndpoint
 		public ServiceRegistryEndpoint serviceRegistryEndpoint(ServiceRegistry serviceRegistry) {
 			ServiceRegistryEndpoint endpoint = new ServiceRegistryEndpoint(serviceRegistry);

@@ -27,7 +27,7 @@ import org.springframework.util.Assert;
 
 /**
  * Endpoint to display and set the service instance status using the ServiceRegistry.
- *
+ * 终端使用ServiceRegistry显示和设置服务实例状态
  * @author Spencer Gibb
  */
 @SuppressWarnings("unchecked")
@@ -46,14 +46,14 @@ public class ServiceRegistryEndpoint {
 		this.registration = registration;
 	}
 
-	@WriteOperation
+	@WriteOperation //设置状态
 	public WebEndpointResponse<?> setStatus(String status) {
 		Assert.notNull(status, "status may not by null");
-
+		// registration注册中心
 		if (this.registration == null) {
 			return new WebEndpointResponse<>("no registration found", HttpStatus.NOT_FOUND.value());
 		}
-
+		// 修改状态
 		this.serviceRegistry.setStatus(this.registration, status);
 		return new WebEndpointResponse<>();
 	}
